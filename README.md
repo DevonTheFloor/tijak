@@ -99,7 +99,8 @@ components
   MyListComponent
     my-list-component.js
     my-list-component.scss
-    ```
+```   
+
 Et [Rollup](https://rollupjs.org/guide/en/ "Lien vers Rollup.js") créera une balise style par composant.
 Dans l\'idéale le style des pages serait géré dans le main.scss. Si une ou plusieurs pages possèdent leurs propres styles, créé alors dans le composants page une balise style et gère le en css.   
    

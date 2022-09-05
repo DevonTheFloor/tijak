@@ -102,7 +102,8 @@ components
   MyListComponent
     my-list-component.js
     my-list-component.scss
-    ```
+```   
+
 And [Rollup](https://rollupjs.org/guide/en/ "Lien vers Rollup.js") will create one style tag per component. Ideally page styling would be handled in main.scss. If one or more pages have their own styles, then create a style tag in the page components and manage it in css.   
 To have your Sass variables globally you can import them into the vite.config.js:   
    
