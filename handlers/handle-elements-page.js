@@ -31,7 +31,7 @@ export function findUrlQueryByAttribute(url, attr, one, first,two, second) {
   } else if ( attr === two){
     url = second;
   } else {
-    url ="http://localhost:4561/myapis/apprenti/errorlink";
+    url ="errorpage";
   }
   return url;
 }

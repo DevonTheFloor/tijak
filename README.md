@@ -1,12 +1,16 @@
 # TIJAK   
+[![en](https://img.shields.io/badge/lang-en-purple.svg)](https://github.com/DevonTheFloor/multilanguage-readme-pattern/blob/main/README.en.md)
+[![krl](https://img.shields.io/badge/lang-krl-red.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.krl.md)
+
+
    
-TIJAK.js est une librairy pour faire des sites multi-page en javascript vanilla sous Vite.js.   
+TIJAK.js est une bibliothèque visant à faire des sites multi-page en javascript vanilla sous Vite.js.   
 La lib utilise la navigation en hash (#) afin de profiter des avantages d'une SPA.   
 Son but est de profiter d'un environnement de développement similaire à un framework mais avec des composants natifs sans DOM virtuel.
    
 ## Installation   
    
-Dans ton projet Vite.js template vanilla, installe la librairy   
+Dans ton projet Vite.js template vanilla, installe la bibliothèque:   
 ```
 npm install tijak
 ```
@@ -67,9 +71,8 @@ export const mapping = [
 
 ## Structure   
    
-TIJAK.js est conçu pour utiliser les customElements en les distribuant par page, d'où la navigation.
-Pour ce faire il faut séparer le dossier des components et le dossier des pages.   
-La structure idéale étant celle-ci:   
+Pour permettre la navigation par "page", il faut séparer le dossier des components et le dossier des pages. La structure idéale étant celle-ci:   
+
 ```bash
 project-folder   
     public
@@ -97,11 +100,12 @@ components
     my-list-component.js
     my-list-component.scss
     ```
-Et Rollup créera une balise style par composant.
+Et [Rollup](https://rollupjs.org/guide/en/ "Lien vers Rollup.js") créera une balise style par composant.
 Dans l\'idéale le style des pages serait géré dans le main.scss. Si une ou plusieurs pages possèdent leurs propres styles, créé alors dans le composants page une balise style et gère le en css.   
    
 Pour avoir tes variable Sass globalement tu peux les importer dans le vite.config.js:   
-
+   
+   
 ```js
 import { defineConfig } from 'vite'
 
@@ -121,4 +125,6 @@ export default defineConfig({
   
 })
 ```
+   
+
 
