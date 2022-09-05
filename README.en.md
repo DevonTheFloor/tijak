@@ -1,6 +1,6 @@
 # TIJAK
    
-[![fr](https://img.shields.io/badge/lang-fr-blue.svg)](https://github.com/DevonTheFloor/multilanguage-readme-pattern/blob/main/README.md)
+[![fr](https://img.shields.io/badge/lang-fr-blue.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.md)
 [![krl](https://img.shields.io/badge/lang-krl-red.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.krl.md)
 
 TIJAK.js is a library aimed at making multi-page sites in vanilla javascript under Vite.js.

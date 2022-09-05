@@ -1,5 +1,5 @@
 # TIJAK   
-[![en](https://img.shields.io/badge/lang-en-purple.svg)](https://github.com/DevonTheFloor/multilanguage-readme-pattern/blob/main/README.en.md)
+[![en](https://img.shields.io/badge/lang-en-purple.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.en.md)
 [![krl](https://img.shields.io/badge/lang-krl-red.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.krl.md)
 
 
