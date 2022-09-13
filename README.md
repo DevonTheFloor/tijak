@@ -4,16 +4,29 @@
 
 
    
-TIJAK.js est une bibliothèque visant à faire des sites multi-page en javascript vanilla sous Vite.js.   
+TIJAK.js, du nom du fruit du Jaquier qui pousse sur l'ile de la Réunion, est une bibliothèque visant à faire des sites multi-page en javascript vanilla sous Vite.js.   
+
 La lib utilise la navigation en hash (#) afin de profiter des avantages d'une SPA.   
 Son but est de profiter d'un environnement de développement similaire à un framework mais avec des composants natifs sans DOM virtuel.
    
 ## Installation   
    
+Tout d'abord créer ton projet Vite.js   
+```
+npm init vite@latest
+```
+
 Dans ton projet Vite.js template vanilla, installe la bibliothèque:   
 ```
-npm install tijak
+git clone https://github.com/DevonTheFloor/tijak
 ```
+   
+Tu peux aussi démarrer avec le starter pack:   
+```
+https://github.com/DevonTheFloor/TIJAK-template-project
+```
+   
+
 ## Fonctionnement   
    
 TIJAK.js est pévu pour distribuer les composants du dossiers "pages" en tant que page du site.   
@@ -68,6 +81,18 @@ export const mapping = [
   }
 ];
   ```
+   
+Les fonctions d'ecoute de l'url pour la navigation en hash doivent être importées dans le main.js:   
+```js
+import '../src/sass/main.scss';
+import { listenForHashInIndex } from '../tijak/builders/page-navigation';
+import { listenForHash }from '../tijak/builders/page-navigation/'
+
+
+listenForHash();
+listenForHashInIndex();
+```
+   
 
 ## Structure   
    

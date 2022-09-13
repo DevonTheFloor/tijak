@@ -1,14 +1,15 @@
 {
   "name": "tijak",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Library for Vite.js with vanilla template for create multi-pages SPA",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "tijak",
-    "vitejs",
+    "vite-js",
     "multi-page",
     "spa"
   ],

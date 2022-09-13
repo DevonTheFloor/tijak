@@ -3,16 +3,29 @@
 [![fr](https://img.shields.io/badge/lang-fr-blue.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.md)
 [![krl](https://img.shields.io/badge/lang-krl-red.svg)](https://github.com/DevonTheFloor/tijak/blob/main/README.krl.md)
 
-TIJAK.js is a library aimed at making multi-page sites in vanilla javascript under Vite.js.
+TIJAK.js, named after the jackfruit that grows on Reunion Island, is a library aimed at making multi-page sites in vanilla javascript with Vite.js.   
+
 The lib uses hash navigation (#) to take advantage of the benefits of a SPA.
 Its goal is to take advantage of a development environment similar to a framework but with native components without virtual DOM.   
    
 ## Installation
    
-In your Vite.js project template  vanilla , install the library:   
+First create your Vite.js project   
 ```bash
-npm install TIJAK
+npm init vite@latest   
 ```
+   
+
+In your Vite.js project template  vanilla , clone the library:   
+```bash
+git clone https://github.com/DevonTheFloor/tijak
+```
+   
+You can also use the starter pack here:
+```
+https://github.com/DevonTheFloor/TIJAK-template-project   
+```
+
    
 ## how it works
    
@@ -70,6 +83,18 @@ export const mapping = [
   }
 ];
   ```
+The url listener functions for hash navigation must be imported into main.js:   
+```js
+import '../src/sass/main.scss';
+import { listenForHashInIndex } from '../tijak/builders/page-navigation';
+import { listenForHash }from '../tijak/builders/page-navigation/'
+
+
+listenForHash();
+listenForHashInIndex();
+```
+   
+
    
 ## Structure
    

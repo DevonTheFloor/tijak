@@ -1,5 +1,5 @@
 import { insertPageInApp } from './mounting-page.js';
-import { mapping } from '../../../navigator-mapping';
+import { mapping } from '../../navigator-mapping';
 
 export function navigator() {
   const url = new URL(window.location.href),
