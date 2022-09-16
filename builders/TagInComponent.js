@@ -11,39 +11,31 @@ export default class TagInComponent{
     markup.id = this.idTag;
     //markup.id = 'id'+markup.tagName+this.number;
     markup.setAttribute('class', this.classAtt);
-    switch (this.tag) {
-      case 'p':
-        this.crateAttributeForPara(markup, this.idTag)
-      break;
-    
-      case 'a':
-        this.createAttributeForLink(markup, this.idTag)
-        break;
-      case 'h1':
-        this.createAttributeForTitle1(markup, this.idTag)
-        break;
-        case 'h2':
-          this.createAttributeForTitle2(markup, this.idTag)
-          break;
-          case 'h3':
-            this.createAttributeForTitle3(markup, this.idTag)
-          break;
-
-            case 'h4':
-              this.createAttributeForTitle4(markup, this.idTag)
-          break;
-              case 'h5':
-                this.createAttributeForTitle5(markup, this.idTag)
-          break;
-                case 'h6':
-                  this.createAttributeForTitle6(markup, this.idTag)
-          break;
-          case 'img':
-            this.createAttributeForImg(markup, this.idTag);
-            break;
-        default:
-          console.error('error unknew tag');
-        break;
+    if (this.tag === "p") {
+      this.crateAttributeForPara(markup, this.idTag)
+    } 
+    else if(this.tag === "a") {
+      this.createAttributeForLink(markup, this.idTag)
+    }
+    else if (this.tag === "h1") {
+      this.createAttributeForTitle1(markup, this.idTag)
+    }
+    else if (this.tag === "h2") {
+      this.createAttributeForTitle2(markup, this.idTag)
+    }
+    else if (this.tag === "h3") {
+      this.createAttributeForTitle3(markup, this.idTag)
+    }
+    else if (this.tag === "h4") {
+      this.createAttributeForTitle4(markup, this.idTag)
+    }
+    else if (this.tag === "h5") {
+      this.createAttributeForTitle5(markup, this.idTag)
+    }
+    else if (this.tag === "h6") {
+      this.createAttributeForTitle6(markup, this.idTag)
+    } else if (this.tag === "img") {
+      this.createAttributeForImg(markup, this.idTag);
     }
     this.mountOn.appendChild(markup);
 
@@ -91,5 +83,37 @@ export default class TagInComponent{
     markup.setAttribute('src', source);
     markup.setAttribute('alt', description);
   }
+  /*liACreatefn(olIdMount, site, url) {
+    const li = document.createElement('li'),
+      olMount = document.getElementById(olIdMount);
+    olMount.appendChild(li);
+    //<a></a>1
+    const a = document.createElement('a')
+    a.setAttribute('href', url);
+    a.setAttribute('target', '_blank');
+    a.textContent = site;
+    li.appendChild(a);
+  }*/
+  liMenuCreator(direction, links, olIdMount, site, url) {
+    links.forEach(link => {
+      const li = document.createElement('li'),
+      olMount = document.getElementById(olIdMount);
+      olMount.appendChild(li);
+      //<a></a>1
+      const a = document.createElement('a')
+      a.setAttribute('href', link.url);
+      if (direction === "out") {
+        a.setAttribute('target', '_blank');
+      }
+      a.textContent = link.site;
+      li.appendChild(a);
+    })
+  }
 
+  /*const links = [
+      { site: "", url: ""},
+      { site: "", url: "" },
+      { site: "", url: "" },
+      { site: "", url: "" }
+    ]*/
 }
