@@ -42,31 +42,31 @@ export class TagInComponent{
   }
     
   createAttributeForTitle1(markup, idTag, context) {
-    const titre = context.getAttribute('titre1-'+idTag);
+    const titre = context.getAttribute('h1-'+idTag);
     markup.textContent = titre;
   }
   createAttributeForTitle2(markup, idTag, context) {
-    const titre = context.getAttribute('titre2-'+idTag);
+    const titre = context.getAttribute('h2-'+idTag);
     markup.textContent = titre;
   }
   createAttributeForTitle3(markup, idTag, context) {
-    const titre = context.getAttribute('titre3-'+idTag);
+    const titre = context.getAttribute('h3-'+idTag);
     markup.textContent = titre;
   }
   createAttributeForTitle4(markup, idTag, context) {
-    const titre = context.getAttribute('titre4-'+idTag);
+    const titre = context.getAttribute('h4-'+idTag);
     markup.textContent = titre;
   }
   createAttributeForTitle5(markup, idTag, context) {
-    const titre = context.getAttribute('titre5-'+idTag);
+    const titre = context.getAttribute('h5-'+idTag);
     markup.textContent = titre;
   }
   createAttributeForTitle6(markup, idTag, context) {
-    const titre = context.getAttribute('titre6-'+idTag);
+    const titre = context.getAttribute('h6-'+idTag);
     markup.textContent = titre;
   }
   crateAttributeForPara(markup, idTag, context) {
-    const content = context.getAttribute('texte-'+idTag);
+    const content = context.getAttribute('text-'+idTag);
     markup.textContent = content;
   }
   createAttributeForLink(markup, idTag, context) {
@@ -87,6 +87,7 @@ export class TagInComponent{
 
 export const tagMethod = {
   liMenuCreator: (direction, links, olIdMount, site, url) =>{
+    
     if (direction === "in") {
       const url = new URL(window.location.href),
         hach = url.hash;
@@ -99,7 +100,10 @@ export const tagMethod = {
         linkedListOut(olIdMount, link);
       })
     }
+    
+   
   }
+  
 }
   function linkedListIn(olIdMount, link) {
     const li = document.createElement('li'),
