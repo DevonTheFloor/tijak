@@ -69,5 +69,6 @@ export function hashNavigatorSearchParams(...paramsName) {
       return null;
     } else {
       const hparams =  Object.assign(...paramsName.map((k, i)=>({[k]: params[i]}) ));
+      return hparams;
     }
 }
