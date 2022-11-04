@@ -5,10 +5,8 @@ export class TagInComponent{
     this.classAtt = classAtt;
     this.mountOn = mountOn;
     this.getContext = getContext;
-
     const markup = document.createElement(this.tag);
     markup.id = this.idTag;
-    //markup.id = 'id'+markup.tagName+this.number;
     markup.setAttribute('class', this.classAtt);
     if (this.tag === "p") {
       this.crateAttributeForPara(markup, this.idTag, this.getContext);
@@ -37,7 +35,6 @@ export class TagInComponent{
       this.createAttributeForImg(markup, this.idTag, this.getContext);
     }
     this.mountOn.appendChild(markup);
-
     return markup;
   }
     
@@ -100,32 +97,29 @@ export const tagMethod = {
         linkedListOut(olIdMount, link);
       })
     }
-    
-   
   }
-  
 }
-  function linkedListIn(olIdMount, link) {
-    const li = document.createElement('li'),
-      olMount = document.getElementById(olIdMount);
-      olMount.appendChild(li);
-      //<a></a>1
-      const a = document.createElement('a')
-      a.setAttribute('href', link.url);
-      a.textContent = link.site;
-    li.appendChild(a);
-  }
-  function linkedListOut(olIdMount, link) {
-    const li = document.createElement('li'),
+function linkedListIn(olIdMount, link) {
+  const li = document.createElement('li'),
     olMount = document.getElementById(olIdMount);
     olMount.appendChild(li);
     //<a></a>1
-    const a = document.createElement('a')
-    a.setAttribute('href', link.url);
-    a.setAttribute('target', '_blank');
-    a.textContent = link.site;
-    li.appendChild(a);
-  }
+    const hlink = document.createElement('history-link');
+    hlink.setAttribute('to-uri', link.url);
+    hlink.setAttribute('text', link.site);
+    li.appendChild(hlink);
+}
+function linkedListOut(olIdMount, link) {
+  const li = document.createElement('li'),
+  olMount = document.getElementById(olIdMount);
+  olMount.appendChild(li);
+  //<a></a>1
+  const a = document.createElement('a')
+  a.setAttribute('href', link.url);
+  a.setAttribute('target', '_blank');
+  a.textContent = link.site;
+  li.appendChild(a);
+}
   
   /*const links = [
       { site: "", url: ""},
