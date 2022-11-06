@@ -26,6 +26,14 @@ export function navigator() {
     }
 }
 
+function withoutParam(splitor) {
+  if (splitor.length >=3 && splitor[2] === "") {
+    return true
+  } else {
+    return false;
+  }
+}
+
 export function activatedNavigator() {
   setTimeout(()=>{
     navigator();
@@ -45,3 +53,8 @@ export function hashNavigatorSearchParams(...paramsName) {
       return hparams;
     }
 }
+export function backRootPage() {
+  history.pushState({page: 0},'Index','/');
+  navigator()
+}
+
