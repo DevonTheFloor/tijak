@@ -1,4 +1,5 @@
 import { dGEBId, dQSAl, gtEBCNa } from "../helpers/myDomHelper";
+import FeedbackApi from '../customTags/feedbackApi/feedback-api';
 
 export function unlockSendButton(id, classMonitor) {
   const exe = dGEBId(id);
@@ -34,4 +35,12 @@ export function findUrlQueryByAttribute(url, attr, one, first,two, second) {
     url ="errorpage";
   }
   return url;
+}
+
+export function useFeedbackApi(res) {
+  const fba = dCrEl('feedback-api'),
+    mount = dQSr('main');
+  fba.setAttribute('message', res.message)
+  mount.appendChild(fba);
+  console.log('message: ', res.message);
 }

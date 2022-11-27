@@ -1,0 +1,13 @@
+feedback-api {
+  display: inline-block;
+  width: 30%;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 30%; 
+  border: 2px solid green;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px 10px rgba(128, 128, 128, 0.606);
+  background-color: rgb(213, 243, 213);
+  padding: 3%;
+}
