@@ -1,6 +1,6 @@
 {
   "name": "tijak",
-  "version": "1.1.1",
+  "version": "1.2.5",
   "description": "Library for Vite.js with vanilla template for create multi-pages SPA",
   "main": "index.js",
   "type":"module",

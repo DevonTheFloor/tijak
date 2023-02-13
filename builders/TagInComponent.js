@@ -5,8 +5,10 @@ export class TagInComponent{
     this.classAtt = classAtt;
     this.mountOn = mountOn;
     this.getContext = getContext;
+
     const markup = document.createElement(this.tag);
     markup.id = this.idTag;
+    //markup.id = 'id'+markup.tagName+this.number;
     markup.setAttribute('class', this.classAtt);
     if (this.tag === "p") {
       this.crateAttributeForPara(markup, this.idTag, this.getContext);
@@ -34,10 +36,44 @@ export class TagInComponent{
     } else if (this.tag === "img") {
       this.createAttributeForImg(markup, this.idTag, this.getContext);
     }
+    else if (this.tag === "label") {
+      this.createAttributeForLabel(markup, this.idTag, this.getContext);
+    }
+    else if (this.tag === "input") {
+      this.createAttributeForInput(markup, this.idTag, this.getContext);
+    }
+    else if (this.tag === "button") {
+      this.createAttributeForButton(markup, this.idTag, this.getContext);
+    }
     this.mountOn.appendChild(markup);
+
     return markup;
   }
-    
+  /**
+   * Create attribute for button tag. Enable: type by type-btn-*; value by txt-btn-*; 
+   * @param {String} markup name of the tag
+   * @param {String} idTag id of the tag
+   * @param {*} context context of the tag for get attribute
+   */
+  createAttributeForButton(markup, idTag, context) {
+    const type = context.getAttribute('type-btn-'+idTag),
+      text = context.getAttribute('txt-btn-'+idTag);
+    markup.setAttribute('type', type);
+    markup.textContent = text;
+  }
+  createAttributeForInput(markup, idTag, context) {
+    const type = context.getAttribute('type-'+idTag),
+      plhldr = context.getAttribute('plhldr-'+idTag);
+    markup.setAttribute('type', type)
+    markup.setAttribute('placeholder', plhldr);
+
+  }
+  createAttributeForLabel(markup, idTag, context) {
+    const pour = context.getAttribute('for-'+idTag),
+      etiquette = context.getAttribute('label-'+idTag);
+    markup.setAttribute('for', pour);
+    markup.textContent = etiquette;
+  }
   createAttributeForTitle1(markup, idTag, context) {
     const titre = context.getAttribute('h1-'+idTag);
     markup.textContent = titre;
@@ -97,17 +133,29 @@ export const tagMethod = {
         linkedListOut(olIdMount, link);
       })
     }
+  },
+  optionsSelectCreator: (listOptions, selectIdMount, value, text) => {
+    listOptions.forEach(detailsOption => {
+      optionForSelect(selectIdMount, detailsOption);
+    })
   }
+}
+function optionForSelect(selectIdMount, details){
+  const option = document.createElement('option'),
+    mount = document.getElementById(selectIdMount),
+    valeur = option.setAttribute('value', details.value);
+    option.textContent = details.text;
+    mount.appendChild(option);
 }
 function linkedListIn(olIdMount, link) {
   const li = document.createElement('li'),
     olMount = document.getElementById(olIdMount);
     olMount.appendChild(li);
     //<a></a>1
-    const hlink = document.createElement('history-link');
-    hlink.setAttribute('to-uri', link.url);
-    hlink.setAttribute('text', link.site);
-    li.appendChild(hlink);
+    const a = document.createElement('a')
+    a.setAttribute('href', link.url);
+    a.textContent = link.site;
+  li.appendChild(a);
 }
 function linkedListOut(olIdMount, link) {
   const li = document.createElement('li'),

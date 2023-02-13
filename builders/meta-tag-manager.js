@@ -10,12 +10,14 @@ export function defineMetaTagsPage(ogTags, cardTags) {
     const meta = dCrEl('meta');
     meta.setAttribute('property', `${data.value}`);
     meta.setAttribute('content', `${data.content}`);
+    meta.setAttribute('class', 'custom-meta');
     header.appendChild(meta);
   });
   cardTags.forEach(data => {
     const meta = dCrEl('meta');
     meta.setAttribute('name', `${data.value}`);
     meta.setAttribute('content', `${data.content}`);
+    meta.setAttribute('class', 'custom-meta');
     header.appendChild(meta);
   })
 }

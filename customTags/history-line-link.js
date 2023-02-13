@@ -1,15 +1,7 @@
 import { navigator } from "../builders/page-navigation";
-/**
- * Intra link with attributes: to-uri, page, text, num
- */
-export default class HistoryLink extends HTMLElement {
+export default class HistoryLineLink extends HTMLElement {
   constructor() {
     super();
-    console.log('Coucou History Link');
-  }
-  connectedCallback() {
-    console.log('Coucou History Link CCB');
-
     const toUri = this.getAttribute('to-uri'),
       page = this.getAttribute('page-title'),
       text = this.getAttribute('text'),
@@ -21,5 +13,6 @@ export default class HistoryLink extends HTMLElement {
     })
     this.style.cursor = "pointer";
   }
+  connectedCallback() {}
 }
-customElements.define('history-link', HistoryLink);
+customElements.define('history-line-link', HistoryLineLink);

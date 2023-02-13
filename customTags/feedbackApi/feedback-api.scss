@@ -2,12 +2,25 @@ feedback-api {
   display: inline-block;
   width: 30%;
   z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 30%; 
-  border: 2px solid green;
+  position: fixed;
+  top: 40vh;
+  left: 30vw; 
+  border: 3px solid green;
   border-radius: 5px;
   box-shadow: 10px 10px 10px 10px rgba(128, 128, 128, 0.606);
-  background-color: rgb(213, 243, 213);
+  background-color: rgb(237, 253, 237);
   padding: 3%;
+
+  @media (max-width: 1000px) {
+    width: 35%
+  }
+  @media (max-width: 500px) {
+    width: 70%;
+    left: 15vw;
+  }
+  @media (max-width: 350px) {
+    width: 90%;
+    left: 10vw;
+  }
+
 }
