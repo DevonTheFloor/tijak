@@ -1,5 +1,4 @@
 import { insertPageInApp } from './mounting-page.js';
-//import { mapping } from '../../navigator-mapping';
 import { dQSr, dQSAl } from '../helpers/myDomHelper.js';
 
 function withoutParam(splitor) {
@@ -9,7 +8,11 @@ function withoutParam(splitor) {
     return false;
   }
 }
-export function navigator() {
+/**
+ * Create the page with the uri
+ * @param {Array} mapping - array of uri
+ */
+export function navigator(mapping) {
   const url = new URL(window.location.href),
     path = url.pathname,
     splitor = path.split('/'),
@@ -47,22 +50,15 @@ export function activatedNavigator() {
 }
 /**
  * Recherche de parametre dans l'url par slash
+ * @param {String} path window.location.pathname of the page
  * @param  {...any} paramsName 
  * @returns 
  */
 export function navigatorSearchParams(path, ...paramsName) {
   const splitor = path.split('/'),
     params = splitor.splice(2);
-    /*if(paramsName.length != params.length || paramsName.length == 0 || params.length == 0){
-      return paramsName;
-    } else {
-      const hparams =  Object.assign(...paramsName.map((k, i)=>({[k]: params[i]}) ));
-      console.log('hparams dans search params :', hparams);
-      return hparams;
-    }*/
     const hparams =  Object.assign(...paramsName.map((k, i)=>({[k]: params[i]}) ));
-      console.log('hparams dans search params :', hparams);
-      return hparams;
+    return hparams;
 }
 /**
  * Fonction de retour à la page index par navigation en history
