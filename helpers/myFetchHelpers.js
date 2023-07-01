@@ -9,7 +9,6 @@ import { dGEBId } from "./myDomHelper";
  * @param {String} bearer the header autorization with token
  * @returns JSON, XML or Text
  */
-
 export async function myPost(url, startingPoint) {
   const datas = fdatasCollector(startingPoint),
     init = {
@@ -26,8 +25,27 @@ export async function myPost(url, startingPoint) {
     return Promise.resolve(resp);
   }
 };
-
-export async function myGet(url, init) {
+/**
+ * Asynchronous fetch get
+ * @param {String} url - url to resource to get
+ * @returns 
+ */
+export async function myGetInit(url) {
+  let response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Erreur transmission requête. Statut : ${response.status}`);
+  } else {
+    const resp = await response.json();
+    return Promise.resolve(resp);
+  }
+};
+/**
+ * A fetch get with initilisation object
+ * @param {String} url 
+ * @param {Object} init 
+ * @returns 
+ */
+export async function myGetInit(url, init) {
   let response = await fetch(url,init);
   if (!response.ok) {
     throw new Error(`Erreur transmission requête. Statut : ${response.status}`);
@@ -36,7 +54,14 @@ export async function myGet(url, init) {
     return Promise.resolve(resp);
   }
 };
-/*export async function myGet(url, format, initobj) {
+/**
+ * A asyunc fetch Get with init object qnd choise of the response format.
+ * @param {String} url 
+ * @param {Function} format - function who determine the format of the response (like text() or json())
+ * @param {Object} initobj - initialized object for header like token and content-type
+ * @returns 
+ */
+export async function myGetInitFormat(url, initobj, format) {
   let response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Erreur transmission requête. Statut : ${response.status}`);
@@ -44,7 +69,12 @@ export async function myGet(url, init) {
     const resp = await response.format;
     return Promise.resolve(resp);
   }
-};*/
+};
+/**
+ * A fetch delete query
+ * @param {String} url - url to delete
+ * @returns 
+ */
 export async function myDelete(url) {
   let response = await fetch(url,{methode: "DELETE"});
   if (!response.ok) {
@@ -54,6 +84,11 @@ export async function myDelete(url) {
     return Promise.resolve(resp);
   }
 };
+/**
+ * Get all the datas of the form and put them in formData
+ * @param {Strring} startingPoint - class of the div top level parent
+ * @returns 
+ */
 function fdatasCollector(startingPoint) {
   const startOn = dGEBId(startingPoint),
     fd = new FormData(),
@@ -68,7 +103,7 @@ function fdatasCollector(startingPoint) {
   return fd;
 }
 /**
- * Pull the token and put it on a header.
+ * Pull the token from LS and put it on a header.
  * @returns header authorization with bearer token
  */
 export function createHeaderBearer () {
@@ -77,9 +112,9 @@ export function createHeaderBearer () {
   return myHeaders;
 }
 /**
- * 
- * @param {String} method post or get initialzed by default on the method
- * @param {Object} datas JSOn of data for send to API
+ * Initilisation object creator
+ * @param {String} method post or get initialized by default on the method
+ * @param {Object} datas JSON of datas for send to API
  * @param {Object} myheaders JSON with the bearer token
  * @returns the init ogbject of the fetch method
  */

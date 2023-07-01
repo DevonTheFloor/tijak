@@ -1,5 +1,5 @@
 import { insertPageInApp } from './mounting-page.js';
-import { mapping } from '../../navigator-mapping';
+//import { mapping } from '../../navigator-mapping';
 import { dQSr, dQSAl } from '../helpers/myDomHelper.js';
 
 function withoutParam(splitor) {
@@ -46,21 +46,23 @@ export function activatedNavigator() {
   },3)
 }
 /**
- * REcherche de parametre dans l'url par slash
+ * Recherche de parametre dans l'url par slash
  * @param  {...any} paramsName 
  * @returns 
  */
-export function navigatorSearchParams(...paramsName) {
-  const path = window.location.pathname,
-    splitor = path.split('/'),
+export function navigatorSearchParams(path, ...paramsName) {
+  const splitor = path.split('/'),
     params = splitor.splice(2);
-    if(paramsName.length != params.length || paramsName.length == 0 || params.length == 0){
-      return null;
+    /*if(paramsName.length != params.length || paramsName.length == 0 || params.length == 0){
+      return paramsName;
     } else {
       const hparams =  Object.assign(...paramsName.map((k, i)=>({[k]: params[i]}) ));
-      console.log('hparams dans searcgh param :', hparams);
+      console.log('hparams dans search params :', hparams);
       return hparams;
-    }
+    }*/
+    const hparams =  Object.assign(...paramsName.map((k, i)=>({[k]: params[i]}) ));
+      console.log('hparams dans search params :', hparams);
+      return hparams;
 }
 /**
  * Fonction de retour à la page index par navigation en history
@@ -82,3 +84,34 @@ export function intraLinkTo(nbr, title, uri) {
   window.scroll(0,0);
 }
 
+export function getStatistique (stats) {
+  const url = new URL(window.location.href),
+    page = url.pathname,
+    inscrit = navigatorSearchParamsStat('page','inscrit'),
+    fd = new FormData();
+    console.log('INSCRIT :', inscrit);
+    const array = [
+      'liste-boulangerie',
+      'fiche-utilisateur',
+      'voir-les-reservations',
+      'configurer-ma-boutique'
+    ];
+    if (array.includes(inscrit.page)) {
+      fd.append('page', inscrit.page);
+      fd.append('param', inscrit.inscrit);
+    } else 
+      {
+        fd.append('page', inscrit.page);
+        fd.append('param', 'NC');
+      }
+    for (const [key, value] of fd) {
+      console.log('in fd : ',key + ': ' + value);
+    }
+  let init = {
+    method: 'POST',
+    body: fd
+    }
+  console.log('URL: ', url, 'page:', page, 'params :', inscrit);
+
+  fetch(stats, init)
+}
