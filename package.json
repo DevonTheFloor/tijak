@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest --environment=happy-dom"
   },
   "keywords": [
     "tijak",
@@ -23,6 +23,7 @@
     "vitest": "^0.32.2"
   },
   "dependencies": {
+    "happy-dom": "^9.20.3",
     "jsdom": "^22.1.0"
   }
 }

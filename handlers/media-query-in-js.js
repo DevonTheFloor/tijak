@@ -4,7 +4,7 @@ import { linkImage } from "./handle-elements-page";
 export function mediaQueryForImages( breakPoint, targets) {
   if(screen.width <= breakPoint) {
     targets.forEach(target => {
-      const image = dGEBId(target.id);
+      const image = document.getElementById(target.id);
       image.src = target.small;
       if (target.link = 'yes') {
         linkImage(image, target.site)
@@ -12,7 +12,7 @@ export function mediaQueryForImages( breakPoint, targets) {
     })
   } else {
     targets.forEach(target => {
-      const image = dGEBId(target.id);
+      const image = document.getElementById(target.id);
       image.src = target.large;
       if (target.link = 'yes') {
         linkImage(image, target.site)

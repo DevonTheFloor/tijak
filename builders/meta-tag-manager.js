@@ -5,7 +5,7 @@ export function defineNewTitle(newTitle) {
 }
 
 export function defineMetaTagsPage(ogTags, cardTags) {
-  const header = dQySr('head');
+  const header = dQSr('head');
   ogTags.forEach(data => {
     const meta = dCrEl('meta');
     meta.setAttribute('property', `${data.value}`);
@@ -20,6 +20,11 @@ export function defineMetaTagsPage(ogTags, cardTags) {
     meta.setAttribute('class', 'custom-meta');
     header.appendChild(meta);
   })
+}
+export function useNewTitle() {
+  const newTitle = dQSr('title').textContent;
+  //TO DO
+  return newTitle;
 }
 
     /*[

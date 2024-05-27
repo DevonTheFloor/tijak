@@ -1,5 +1,4 @@
 import './feedback-api.scss';
-import { dCrEl } from '../../helpers/myDomHelper';
 import { navigator } from '../../builders/page-navigation';
 
 export default class FeedbackApi extends HTMLElement {
@@ -11,7 +10,7 @@ export default class FeedbackApi extends HTMLElement {
     }
   }
   connectedCallback() {
-    const pi = dCrEl('p'),
+    const pi = document.createElement('p'),
       apiRes = this.getAttribute('message');
     pi.innerHTML = apiRes;
     this.appendChild(pi);

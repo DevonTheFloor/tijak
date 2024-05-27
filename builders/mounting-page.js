@@ -1,4 +1,3 @@
-import { dGEBId } from '../helpers/myDomHelper';
 
 export function mountingPageElements(mount, page) {
   mount.insertAdjacentHTML('afterbegin', page)
@@ -6,7 +5,7 @@ export function mountingPageElements(mount, page) {
 }
 
 export function insertPageInApp(page) {
-  const mount = dGEBId('app');
+  const mount =  document.getElementById('app');
   mount.innerHTML = '';
   mount.innerHTML = page ;
 }

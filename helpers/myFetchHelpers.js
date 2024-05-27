@@ -70,6 +70,24 @@ export async function myGetInitFormat(url, initobj, format) {
     return Promise.resolve(resp);
   }
 };
+export async function myGetTextDebug(url, init) {
+  let response = await fetch(url,init);
+  if (!response.ok) {
+    throw new Error(`Erreur transmission requête. Statut : ${response.status}`);
+  } else {
+    const resp = await response.text();
+    return Promise.resolve(resp);
+  }
+};
+/*export async function myGet(url, format, initobj) {
+  let response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Erreur transmission requête. Statut : ${response.status}`);
+  } else {
+    const resp = await response.format;
+    return Promise.resolve(resp);
+  }
+};*/
 /**
  * A fetch delete query
  * @param {String} url - url to delete

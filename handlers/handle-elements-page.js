@@ -3,14 +3,14 @@ import FeedbackApi from "../customTags/feedbackApi/feedback-api";
 /**
  * Enabled button when all fields of form are kept
  * @param {String} id id of the button
- * @param {*} from the tag from where the HTML collection start
+ * @param {HTMLElement} from the tag from where the HTML collection start
  * @param {String} classMonitor class of the elements to get
  */
 export function unlockSendButton(id, from, classMonitor) {
   console.log('in UNlock');
-  const exe = dGEBId(id),
+  const exe = document.getElementById(id),
     validator = gtEBCNa(from, classMonitor),
-    fields = dQSAl('input');
+    fields = document.querySelectorAll('input');
   exe.addEventListener('mouseover', function(){
     for (let valid of validator) {
       if (valid.textContent === '') {
@@ -109,7 +109,7 @@ export function iAmConnected() {
  * @param {String} classInput class of the input to cleean
  */
 export function cleanAllInputs(classInput) {
-  const tablo = dGEBCNa(classInput);
+  const tablo = document.getElementsByClassName(classInput);
   for(let tab of tablo) {
     tab.value = '';
   }
@@ -121,7 +121,7 @@ export function cleanAllInputs(classInput) {
  * @param {String} classAdd disabled style class to add
  */
 export function relockButton(idBtn, classRemov, classAdd) {
-  const btn = dGEBId(idBtn);
+  const btn = document.getElementById(idBtn);
   btn.classList.remove(classRemov);
   btn.classList.add(classAdd);
   btn.setAttribute('disabled',true);
@@ -136,7 +136,7 @@ export function relockButton(idBtn, classRemov, classAdd) {
 export function simpleUnlockButton(idBtn,attriAdd, classRemov, classAdd ) {
   let send = null;
   if(typeof(idBtn) === String) {
-    send = dGEBId(idBtn)
+    send = document.getElementById(idBtn)
   } else {
     send = idBtn;
   }
