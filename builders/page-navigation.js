@@ -1,5 +1,6 @@
 import { insertPageInApp } from './mounting-page.js';
 import { dQSr, dQSAl } from '../helpers/myDomHelper.js';
+import { mapping } from '../../navigator-mapping.js';
 
 function withoutParam(splitor) {
   if (splitor.length >=3 && splitor[2] === "") {

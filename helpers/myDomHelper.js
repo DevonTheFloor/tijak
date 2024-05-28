@@ -82,3 +82,12 @@ export function gtEBCNa(from, className) {
       return from.getElementsByClassName(className);
   }
 }
+export function gtEBTgNa(from, className) {
+  console.log('from in gtEBCNa:', from);
+  console.log('classe name for from:', className);
+  if (!from) {
+    console.error('No valid node "from" in gtEBCNa:', from, 'for classname: ', className)
+  } else {
+      return from.getElementByTagName(className);
+  }
+}
