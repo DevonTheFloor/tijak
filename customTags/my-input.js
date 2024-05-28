@@ -1,12 +1,15 @@
-import { dCrEl, dGEBId } from "../helpers/myDomHelper";
+/**
+ * Custom element representing an input field with label and validation schema to setting, values are: 'labelTxt','labIb(id of <label>),'inpId','type'(of input),'pattern'(regex),.
+ * @extends HTMLElement
+ */
 export default class MyInput extends HTMLElement {
   constructor () {
     super();
     // labelTxt, labId,inpId, type, pattern, inpPhr
-    const label = dCrEl('label'),
+    const label = document.createElement('label'),
       labelTxt = this.getAttribute('labelTxt'),
       labId = this.getAttribute('labId'),
-      myInput = dCrEl('input'),
+      myInput = document.createElement('input'),
       inpId = this.getAttribute('inpId'),
       type = this.getAttribute('type'),
       pattern = this.getAttribute('pattern');
@@ -33,7 +36,7 @@ export default class MyInput extends HTMLElement {
       myInput.title = info;
     }
     label.appendChild(myInput);
-    const spanError = dCrEl('span');
+    const spanError = document.createElement('span');
     const idTagMesg = `err${inpId}`;
     spanError.id = idTagMesg;
     spanError.setAttribute('class','errMsg');
@@ -45,8 +48,8 @@ export default class MyInput extends HTMLElement {
   }
   verifyField (idCible,idTagMessage, myRegex, messageError) {
     console.log('In Verif');
-    let cible = dGEBId(idCible);
-    let tagMessage = dGEBId(idTagMessage);
+    let cible = document.getElementById(idCible);
+    let tagMessage = document.getElementById(idTagMessage);
     cible.addEventListener('focus', function () {
       let cv = cible.value;
       tagMessage.innerHTML = '';

@@ -1,4 +1,3 @@
-import { dGEBId, dQSAl, gtEBCNa, dCrEl, dQSr, dGEBCNa } from "../helpers/myDomHelper";
 import FeedbackApi from "../customTags/feedbackApi/feedback-api";
 /**
  * Enabled button when all fields of form are kept
@@ -9,7 +8,8 @@ import FeedbackApi from "../customTags/feedbackApi/feedback-api";
 export function unlockSendButton(id, from, classMonitor) {
   console.log('in UNlock');
   const exe = document.getElementById(id),
-    validator = gtEBCNa(from, classMonitor),
+    //validator = gtEBCNa(from, classMonitor),
+    validator = from.getElementsByClassName(classMonitor),
     fields = document.querySelectorAll('input');
   exe.addEventListener('mouseover', function(){
     for (let valid of validator) {
@@ -22,6 +22,12 @@ export function unlockSendButton(id, from, classMonitor) {
     }
   })
 }	
+/**
+ * Adds a click event listener to an element, opening a new window/tab with the specified destination URL when clicked.
+ * @param {HTMLElement} target - The element to attach the click event listener to.
+ * @param {string} destination - The URL to open when the element is clicked.
+ * @returns {void}
+ */
 export function linkImage(target, destination) {
   //const linkJs = dGEBId(target);
   target.style.cursor = "pointer";
@@ -29,6 +35,16 @@ export function linkImage(target, destination) {
     window.open(destination)
   })
 }
+/**
+ * Finds the URL query based on the attribute value provided.
+ * @param {string} url - The URL to search for the query.
+ * @param {string} attr - The attribute to match against.
+ * @param {string} one - The first attribute value to check.
+ * @param {string} first - The corresponding URL for the first attribute value.
+ * @param {string} two - The second attribute value to check.
+ * @param {string} second - The corresponding URL for the second attribute value.
+ * @returns {string} The URL corresponding to the matched attribute value, or 'errorpage' if no match is found.
+ */
 export function findUrlQueryByAttribute(url, attr, one, first,two, second) {
   url ='';
   if (attr === one) {
@@ -45,8 +61,8 @@ export function findUrlQueryByAttribute(url, attr, one, first,two, second) {
  * @param {Object} res - resonse in JSON from the API
  */
 export function useFeedbackApi(res) {
-  const fba = dCrEl('feedback-api'),
-    mount = dQSr('main');
+  const fba = document.createElement('feedback-api'),
+    mount = document.querySelector('main');
   fba.setAttribute('message', res.message)
   mount.appendChild(fba);
   console.log('message: ', res.message);
@@ -58,8 +74,8 @@ export function useFeedbackApi(res) {
  * @param {Number} time In millisecond, the time elapsed before remove box.
  */
 export function tijakAlert(msg, type, time) {
-  const fba = dCrEl('feedback-api'),
-    mount = dQSr('main');
+  const fba = document.createElement('feedback-api'),
+    mount = document.querySelector('main');
   fba.setAttribute('message', msg);
   if(type === 'error') {
     fba.style.backgroundColor = "rgb(249, 171, 171)";

@@ -49,7 +49,12 @@ let jpm =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   }
   return { yesterday, today, tomorrow, mounth, yesterdayMounth, tomorrowMounth, year, yesterdayYear, tomorrowYear}
 }
-
+/**
+ * Checks if a given year is divisible by four.
+ *
+ * @param {number} annee - The year to be checked.
+ * @returns {boolean} True if the year is divisible by four, otherwise false.
+ */
 function estDivParQuatre(annee) {
   const div4 = annee%4;
   if(div4 === 0) {
@@ -58,6 +63,12 @@ function estDivParQuatre(annee) {
     return false;
   }
 }
+/**
+ * Checks if a given year is divisible by one hundred.
+ *
+ * @param {number} annee - The year to be checked.
+ * @returns {boolean} True if the year is divisible by one hundred, otherwise false.
+ */
 function estDivParCent(annee) {
   const div100 = annee%100;
   if(div100 === 0) {
@@ -66,6 +77,11 @@ function estDivParCent(annee) {
     return false;
   }
 }
+/**
+ * Checks if a given year is divisible by 400.
+ * @param {number} year - The year to check.
+ * @returns {boolean} Returns true if the year is divisible by 400, otherwise false.
+ */
 function estDivParQuatreCent(annee) {
   const div400 = annee%400;
   if(div400 === 0) {
@@ -74,6 +90,11 @@ function estDivParQuatreCent(annee) {
     return false;
   }
 }
+/**
+ * Checks if a given year is a leap year.
+ * @param {number} year - The year to check.
+ * @returns {boolean} Returns true if the year is a leap year, otherwise false.
+ */
 function isBissextile(annee) {
   if ((estDivParQuatre(annee) === true) 
     && (estDivParCent(annee) === true) 

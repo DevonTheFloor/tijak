@@ -1,6 +1,9 @@
 import './feedback-api.scss';
 import { navigator } from '../../builders/page-navigation';
-
+/**
+ * Custom element representing a feedback message with navigation functionality.
+ * @extends HTMLElement
+ */
 export default class FeedbackApi extends HTMLElement {
   constructor() {
     super();
@@ -9,6 +12,10 @@ export default class FeedbackApi extends HTMLElement {
       navigator()
     }
   }
+   /**
+   * Called when the element is connected to the document's DOM.
+   * @returns {void}
+   */
   connectedCallback() {
     const pi = document.createElement('p'),
       apiRes = this.getAttribute('message');

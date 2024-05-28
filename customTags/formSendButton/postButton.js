@@ -1,3 +1,7 @@
+/**
+ * Custom element representing a post button.
+ * @extends HTMLElement
+ */
 export default class PostButton extends HTMLElement {
   constructor() {
     super();

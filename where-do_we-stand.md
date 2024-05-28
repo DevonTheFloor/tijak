@@ -1,2 +1,2 @@
-regler le probleme du mapping pour navigator()
+regler le probleme du mapping pour navigator() => done
 retirer tous les helpers

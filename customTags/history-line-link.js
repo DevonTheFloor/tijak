@@ -1,4 +1,8 @@
 import { navigator } from "../builders/page-navigation";
+/**
+ * Custom element representing a clickable history line link.
+ * @extends HTMLElement
+ */
 export default class HistoryLineLink extends HTMLElement {
   constructor() {
     super();

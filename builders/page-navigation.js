@@ -9,45 +9,10 @@ function withoutParam(splitor) {
   }
 }
 /**
- * Create the page with the uri
- * @param {Array} mapping - array of uri
+ * Navigates within the web application based on the current URL path.
+ * @returns {void}
  */
-/*export function navigator(mapping) {
-  const url = new URL(window.location.href),
-    app = document.getElementById('app'),
-    path = url.pathname,
-    splitor = path.split('/'),
-    customMetas = document.querySelectorAll('meta.custom-meta');
-   console.log('PATH :', path);
-   console.log('splito :', splitor);
-   console.log('longueur :', splitor.length);
-
-   console.log('APP: ', app);
-   for(let meta of customMetas) {
-     meta.remove();
-   }
-   let uril = `/${splitor[1]}`;
-   console.log('URIl ds navigator:', uril);
-
-   let pa = mapping.find(p => p.uri === uril);
-   console.log('PA dans navigator :', pa);
-
-   if (pa === undefined ) {
-    setTimeout(()=> {
-        history.back();
-        //navigator(mapping);
-        window.scroll(0,0);
-     }, 3000);
-      app.innerHTML = "<h1>ERROR 404</h1><p>La page que vous cherchez n'existe pas</p>";
-      window.scroll(0, 0);
-    } else {
-      //insertPageInApp(pa.page);
-        app.innerHTML = '';
-        app.innerHTML = pa.page ;
-      window.scroll(0,0);
-    }
-}*/
-export function navigator(mapping) {
+export function navigator() {
   const url = new URL(window.location.href),
     app = document.getElementById('app'),
     path = url.pathname,
@@ -84,17 +49,19 @@ export function navigator(mapping) {
   }
   /* a quoi sert cette ligne? return { document: window.document };*/
 }
-
+/**
+ * Activates the navigator function after a delay of 3 milliseconds.
+ * @returns {void}
+ */
 export function activatedNavigator() {
   setTimeout(()=>{
     navigator();
   },3)
 }
 /**
- * Recherche de parametre dans l'url par slash
- * @param {String} path window.location.pathname of the page
- * @param  {...any} paramsName 
- * @returns 
+ * Parses search parameters from the current URL path based on specified parameter names.
+ * @param {...string} paramsName - The names of the parameters to retrieve from the URL.
+ * @returns {Object | undefined} An object containing the parsed search parameters, or undefined if parameters are missing or invalid.
  */
 export function navigatorSearchParams(...paramsName) {
   console.log('NAVIGATOR Search PAram');
@@ -113,7 +80,11 @@ export function navigatorSearchParams(...paramsName) {
       return hparams;
     }
 }
-
+/**
+ * Parses search parameters from the current URL path based on specified parameter names.
+ * @param {...string} paramsName - The names of the parameters to retrieve from the URL.
+ * @returns {Object | undefined} An object containing the parsed search parameters, or undefined if parameters are missing or invalid.
+ */
 export function navigatorSearchParamsStat(...paramsName) {
   console.log('NAVIGATOR Search PAram');
   const path = window.location.pathname,
@@ -131,7 +102,10 @@ export function navigatorSearchParamsStat(...paramsName) {
       return hparams;
     }
 }
-
+/**
+ * Retrieves the search parameter 'cp' from the current URL path.
+ * @returns {Object} An object containing the 'cp' parameter from the URL.
+ */
 export function navigatorSearchParamsCp() {
   console.log('NAVIGATOR Search PAram');
   const path = window.location.pathname,
@@ -141,6 +115,10 @@ export function navigatorSearchParamsCp() {
     console.log('params in navigator :', params);
     return { cp: params[0]}
 }
+/**
+ * Retrieves the search parameter 'id' from the current URL path.
+ * @returns {Object} An object containing the 'id' parameter from the URL.
+ */
 export function navigatorSearchParamsId() {
   console.log('NAVIGATOR Search PAram');
   const path = window.location.pathname,
@@ -151,7 +129,8 @@ export function navigatorSearchParamsId() {
     return { id: params[0]}
 }
 /**
- * Fonction de retour à la page index par navigation en history
+ * Navigates back to the root page of the application.
+ * @returns {void}
  */
 export function backRootPage() {
   history.pushState({page: 0},'Index','/');
@@ -159,17 +138,22 @@ export function backRootPage() {
   window.scroll(0,0);
 }
 /**
- * 
- * @param {Integer} nbr - integer for the numerous of the page
- * @param {String} title - title of the page
- * @param {String} uri - uri of the page
+ * Navigates to a specified URI within the application.
+ * @param {number} nbr - The page number or state identifier.
+ * @param {string} title - The title for the new state.
+ * @param {string} uri - The URI to navigate to.
+ * @returns {void}
  */
 export function intraLinkTo(nbr, title, uri) {
   history.pushState({page: nbr},title,uri);
   navigator();
   window.scroll(0,0);
 }
-
+/**
+ * Sends statistical data based on the current URL parameters to a specified endpoint.
+ * @param {string} stats - The endpoint URL to send the statistical data to.
+ * @returns {void}
+ */
 export function getStatistique (stats) {
   const url = new URL(window.location.href),
     page = url.pathname,
@@ -201,11 +185,18 @@ export function getStatistique (stats) {
 
   fetch(stats, init)
 }
-
+/**
+ * Navigates to the error page.
+ * @returns {void}
+ */
 export function goToErrorPage() {
   history.pushState({ page: 4 }, 'Erreur', '/not-found');
   navigator()
 }
+/**
+ * Logs and returns the path segments of the current URL.
+ * @returns {string[]} An array containing the non-empty segments of the URL path.
+ */
 export function paramsLogger() {
   const url = new URL(window.location),
     page = url.pathname,
