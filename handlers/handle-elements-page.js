@@ -43,6 +43,32 @@ export function unlockSendButton(id, from, classMonitor) {
     exe.disabled = true;
   });
 }
+/*export function unlockSendButton(id, from, classMonitor) {
+  console.log('in UNlock');
+  const exe = document.getElementById(id),
+    validator = from.getElementsByClassName(classMonitor),
+    fields = document.querySelectorAll('input');
+
+  if (exe) {
+    exe.addEventListener('mouseover', function () {
+      for (let valid of validator) {
+        if (valid.textContent === '') {
+          exe.disabled = true;
+          return;
+        }
+      }
+      for (let field of fields) {
+        if (field.value !== '') {
+          exe.disabled = false;
+          return;
+        }
+      }
+      exe.disabled = true;
+    });
+  } else {
+    console.error(`Element with id "${id}" not found.`);
+  }
+}*/
 
 /**
  * Adds a click event listener to an element, opening a new window/tab with the specified destination URL when clicked.

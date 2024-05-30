@@ -1,5 +1,4 @@
-// unlock-send-button.test.js
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { unlockSendButton } from '../../handlers/handle-elements-page';
 
 describe('unlockSendButton', () => {
@@ -10,88 +9,81 @@ describe('unlockSendButton', () => {
       <div id="from">
         <span class="validator"></span>
         <input type="text" />
-        <span class="validator"></span>
         <input type="text" />
       </div>
-      <button id="exe" disabled>Submit</button>
-    `;*/
-    button = document.getElementById('exe');
+      <button id="submit" disabled>Submit</button>
+    `;
+    button = document.getElementById('submit');
     from = document.getElementById('from');
-  });
-  afterEach(()=>{
-    document.body.innerHTML = '';
-  })
-  it('should enable the button when all fields are filled and validators are empty', () => {
-    /*const inputs = document.querySelectorAll('input');
+  });*/
+  const divFrom = document.createElement('div');
+  divFrom.setAttribute('id', 'from');
+
+  const spanValidator = document.createElement('span');
+  spanValidator.setAttribute('class', 'validator');
+
+  const input1 = document.createElement('input');
+  input1.setAttribute('type', 'text');
+
+  const input2 = document.createElement('input');
+  input2.setAttribute('type', 'text');
+
+  const buttonSubmit = document.createElement('button');
+  buttonSubmit.setAttribute('id', 'submit');
+  buttonSubmit.setAttribute('disabled', 'true');
+  buttonSubmit.textContent = 'Submit';
+
+  // Ajout des éléments enfants au div
+  divFrom.appendChild(spanValidator);
+  divFrom.appendChild(input1);
+  divFrom.appendChild(input2);
+
+  // Ajout des éléments au body
+  document.body.appendChild(divFrom);
+  document.body.appendChild(buttonSubmit);
+
+  it('should enable the button when all fields are filled and validators are non-empty', (done) => {
+    const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value = 'test');
 
     const validators = from.getElementsByClassName('validator');
-    const voir = Array.from(validators).forEach(validator => validator.textContent = 'error');
-    console.log
-    ('VOIR: ', voir);*/
-    let from;
-    let button;
-    document.body.innerHTML = `
-      <div id="from">
-        <span class="validator"></span>
-        <input type="text" value="value01"/>
-        <span class="validator"></span>
-        <input type="text" value="value02"/>
-      </div>
-      <button id="exe" disabled>Submit</button>
-    `;
-    from = document.getElementById('from');
-    button = document.getElementById('exe');
-    unlockSendButton('exe', from, 'validator');
+    Array.from(validators).forEach(validator => validator.textContent = 'valid');
 
+    unlockSendButton('submit', from, 'validator');
+
+    // Simuler l'événement `mouseover`
     const event = new Event('mouseover');
     button.dispatchEvent(event);
 
-    expect(button.disabled).toBe(true);
+    // Utiliser setTimeout pour attendre avant de vérifier l'état du bouton
+    setTimeout(() => {
+      expect(button.disabled).toBe(false);
+      done();
+    }, 1000);
   });
 
-  it('should keep the button disabled if any field is empty', () => {
-    /*const inputs = document.querySelectorAll('input');
+  it('should keep the button disabled if any field is empty', (done) => {
+    const inputs = document.querySelectorAll('input');
     inputs[0].value = 'test';
     inputs[1].value = '';  // One field is empty
 
     const validators = from.getElementsByClassName('validator');
-    Array.from(validators).forEach(validator => validator.textContent = '');*/
-    let from;
-    let button;
-    document.body.innerHTML = `
-      <div id="from">
-        <span class="validator"></span>
-        <input type="text" value="value01"/>
-        <span class="validator"></span>
-        <input type="text" value=""/>
-      </div>
-      <button id="exe" disabled>Submit</button>
-    `;
-    from = document.getElementById('from');
-    button = document.getElementById('exe');
+    Array.from(validators).forEach(validator => validator.textContent = 'valid');
+
     unlockSendButton('submit', from, 'validator');
 
+    // Simuler l'événement `mouseover`
     const event = new Event('mouseover');
     button.dispatchEvent(event);
 
-    expect(button.disabled).toBe(true);
+    // Utiliser setTimeout pour attendre avant de vérifier l'état du bouton
+    setTimeout(() => {
+      expect(button.disabled).toBe(true);
+      done();
+    }, 1000);
   });
 
-  it('should keep the button disabled if any validator is empty', () => {
-    let from;
-    let button;
-    document.body.innerHTML = `
-      <div id="from">
-        <span class="validator">error</span>
-        <input type="text" value="value01"/>
-        <span class="validator"></span>
-        <input type="text" value="value02"/>
-      </div>
-      <button id="exe" disabled>Submit</button>
-    `;
-    from = document.getElementById('from');
-    button = document.getElementById('exe');
+  it('should keep the button disabled if any validator is empty', (done) => {
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value = 'test');
 
@@ -102,9 +94,28 @@ describe('unlockSendButton', () => {
 
     unlockSendButton('submit', from, 'validator');
 
+    // Simuler l'événement `mouseover`
     const event = new Event('mouseover');
     button.dispatchEvent(event);
 
-    expect(button.disabled).toBe(false);
+    // Utiliser setTimeout pour attendre avant de vérifier l'état du bouton
+    setTimeout(() => {
+      expect(button.disabled).toBe(true);
+      done();
+    }, 1000);
   });
 
+  it('should log an error if the button element is not found', () => {
+    document.body.innerHTML = `
+      <div id="from">
+        <span class="validator"></span>
+        <input type="text" />
+        <input type="text" />
+      </div>
+    `; // No button element
+
+    const consoleErrorSpy = vi.spyOn(console, 'error');
+    unlockSendButton('submit', from, 'validator');
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Element with id "submit" not found.');
+  });
+})
