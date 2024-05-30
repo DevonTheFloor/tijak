@@ -3,9 +3,20 @@
  * @param {string} newTitle - The new title to set.
  * @returns {void}
  */
+/*export function defineNewTitle(newTitle) {
+  const titre = document.querySelector('title');
+  titre.textContent = '';
+  titre.textContent = newTitle;
+}*/
 export function defineNewTitle(newTitle) {
-  document.querySelector('title').innerHTML = newTitle ;
+  const titre = document.querySelector('title');
+  if (titre) {
+    titre.textContent = newTitle;
+  } else {
+    console.error('No <title> element found in the document.');
+  }
 }
+
 /**
  * Defines meta tags for Open Graph (og) and Twitter card.
  * @param {Array<{value: string, content: string}>} ogTags - Array of objects containing Open Graph meta tag data.
@@ -34,9 +45,11 @@ export function defineMetaTagsPage(ogTags, cardTags) {
  * @returns {string} The current title of the HTML document.
  */
 export function useNewTitle() {
-  const newTitle = document.querySelector('title').textContent;
-  //TO DO
-  return newTitle;
+  const titleElement = document.querySelector('title');
+  if (titleElement) {
+    return titleElement.textContent;
+  }
+  return undefined; // Ou '' si vous préférez retourner une chaîne vide par défaut
 }
 
     /*[

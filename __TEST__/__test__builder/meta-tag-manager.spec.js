@@ -90,6 +90,9 @@ describe('defineNewTitle', () => {
   beforeEach(() => {
     document.head.innerHTML = '<title>Old Title</title>'; // Réinitialiser avec un titre de test
   });
+  afterEach(()=> {
+    document.head.innerHTML = '';
+  })
 
   it('should update the title element with the new title', () => {
     const newTitle = 'New Test Title';
@@ -97,7 +100,7 @@ describe('defineNewTitle', () => {
     defineNewTitle(newTitle);
 
     const titleElement = document.querySelector('title');
-    expect(titleElement.innerHTML).toBe(newTitle);
+    expect(titleElement.textContent).toBe(newTitle);
   });
 
   it('should handle empty titles', () => {
@@ -106,7 +109,7 @@ describe('defineNewTitle', () => {
     defineNewTitle(newTitle);
 
     const titleElement = document.querySelector('title');
-    expect(titleElement.innerHTML).toBe(newTitle);
+    expect(titleElement.textContent).toBe(newTitle);
   });
 
   it('should handle long titles', () => {
@@ -115,7 +118,7 @@ describe('defineNewTitle', () => {
     defineNewTitle(newTitle);
 
     const titleElement = document.querySelector('title');
-    expect(titleElement.innerHTML).toBe(newTitle);
+    expect(titleElement.textContent).toBe(newTitle);
   });
 
   it('should update the title element even if it has special characters', () => {
@@ -124,7 +127,7 @@ describe('defineNewTitle', () => {
     defineNewTitle(newTitle);
 
     const titleElement = document.querySelector('title');
-    expect(titleElement.innerHTML).toBe(newTitle);
+    expect(titleElement.textContent).toBe(newTitle);
   });
 });
 

@@ -2,11 +2,11 @@ import FeedbackApi from "../customTags/feedbackApi/feedback-api";
 /**
  * Enabled button when all fields of form are kept
  * @param {String} id id of the button
- * @param {HTMLElement} from the tag from where the HTML collection start
+ * @param {String} idFrom id of the tag from where the HTML collection start
  * @param {String} classMonitor class of the elements to get
  */
-export function unlockSendButton(id, from, classMonitor) {
-  console.log('in UNlock');
+/*export function unlockSendButton(id, from, classMonitor) {
+  console.log('in UNlockSdBtn');
   const exe = document.getElementById(id),
     //validator = gtEBCNa(from, classMonitor),
     validator = from.getElementsByClassName(classMonitor),
@@ -21,7 +21,29 @@ export function unlockSendButton(id, from, classMonitor) {
       }
     }
   })
-}	
+}	*/
+export function unlockSendButton(id, from, classMonitor) {
+  console.log('in UNlock');
+  const exe = document.getElementById(id),
+    validator = from.getElementsByClassName(classMonitor),
+    fields = document.querySelectorAll('input');
+  exe.addEventListener('mouseover', function() {
+    for (let valid of validator) {
+      if (valid.textContent === '') {
+        exe.disabled = true;
+        return;
+      }
+    }
+    for (let field of fields) {
+      if (field.value !== '') {
+        exe.disabled = false;
+        return;
+      }
+    }
+    exe.disabled = true;
+  });
+}
+
 /**
  * Adds a click event listener to an element, opening a new window/tab with the specified destination URL when clicked.
  * @param {HTMLElement} target - The element to attach the click event listener to.
