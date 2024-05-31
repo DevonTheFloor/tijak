@@ -140,10 +140,10 @@ export function tijakAlert(msg, type, time) {
 }
 /**
  * Get all one or several value of key in local storage.
- * @param {*} getDatas array of items to get in local storage
+ * @param {Array} getDatas array of items to get in local storage
  * @returns object of objet with datas in local storage
  */
-export function getDatasLocalStorage (getDatas) {
+/*export function getDatasLocalStorage (getDatas) {
   let lsDatas = {},
    datas = [];
   for (let data of getDatas) {
@@ -154,7 +154,18 @@ export function getDatasLocalStorage (getDatas) {
   }
   console.log('ls datas :', lsDatas);
   return lsDatas;
+}*/
+export function getDatasLocalStorage(getDatas) {
+  let lsDatas = [];
+  for (let data of getDatas) {
+    console.log('data :', data);
+    let value = localStorage.getItem(data);
+    lsDatas.push({ [data]: value });
+  }
+  console.log('ls datas :', lsDatas);
+  return lsDatas;
 }
+
 /**
  * Nwowing if you are connected by fonding token in local storage.
  * @returns true if token existe, false if not
