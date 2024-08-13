@@ -21,6 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "happy-dom": "^14.11.4",
+    "sass": "^1.77.3",
     "vitest": "^0.32.2"
   },
   "dependencies": {

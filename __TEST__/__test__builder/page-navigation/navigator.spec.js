@@ -36,13 +36,13 @@ describe('navigator', () => {
     // Mock the window.location.href
     Object.defineProperty(window, 'location', {
       value: {
-        href: 'https://example.com/mentions-legales',
+        href: 'https://example.com/not-found',
       },
       writable: true,
     });
 
     navigator();
-    expect(app.innerHTML).toBe('<mentions-legales></mentions-legales>');
+    expect(app.innerHTML).toBe('<not-found></not-found>');
   });
 
   it('should display 404 error for unknown routes', () => {
