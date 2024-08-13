@@ -1,7 +1,7 @@
 export class TagInComponent{
   constructor( tag, idTag, classAtt, mountOn, getContext) {
     this.tag = tag;
-    this.idTag = idTag;
+    this.idTag = idTag ? idTag : this.#individualization(tag); // Utilisation de la méthode pour générer un ID unique
     this.classAtt = classAtt;
     this.mountOn = mountOn;
     this.getContext = getContext;
@@ -48,6 +48,27 @@ export class TagInComponent{
     this.mountOn.appendChild(markup);
 
     return markup;
+  }
+  /**
+  * Génère un identifiant unique pour une instance en utilisant un compteur statique.
+  *
+  * Cette méthode utilise un compteur statique pour suivre le nombre d'instances créées.
+  * Chaque appel à cette méthode incrémente le compteur et retourne un identifiant unique basé sur 
+  * l'ID de l'instance fourni et la valeur actuelle du compteur.
+  *
+  * @param {string} instanceId - L'identifiant de l'instance pour laquelle un identifiant unique est généré.
+  * @returns {string} L'identifiant unique pour l'instance, composé de l'ID de l'instance et du compteur.
+  * @private
+ */
+  #individualization(instanceId) {
+    // Static counter to keep track of the number of instances
+    if (!TagInComponent.counter) {
+      TagInComponent.counter = 0;
+    }
+    
+    // Increment the counter and return a unique ID
+    const unikId = `${instanceId}-${TagInComponent.counter++}`;
+    return unikId;
   }
   /**
    * Create attribute for button tag. Enable: type by type-btn-*; value by txt-btn-*; 
