@@ -1,3 +1,11 @@
+/**
+ * Class for create tag faster
+ * @param { String } tag - the tag to create
+ * @param { String } idTag - Id of the tag, if null individuazlization() create a uniq one.
+ * @param { String } classAtt - class of the tag
+ * @param { Object } mountOn - the node where the tag is mounted, generaly 'this'
+ * @param { HTMLElement } getContext - the node context of the element, generaly the entire class 'this' 
+ */
 export class TagInComponent{
   constructor( tag, idTag, classAtt, mountOn, getContext) {
     this.tag = tag;
@@ -72,9 +80,9 @@ export class TagInComponent{
   }
   /**
    * Create attribute for button tag. Enable: type by type-btn-*; value by txt-btn-*; 
-   * @param {String} markup name of the tag
-   * @param {String} idTag id of the tag
-   * @param {*} context context of the tag for get attribute
+   * @param { String } markup name of the tag
+   * @param { String } idTag id of the tag
+   * @param { HTMLElement } context context of the tag for get attribute
    */
   createAttributeForButton(markup, idTag, context) {
     const type = context.getAttribute('type-btn-'+idTag),
