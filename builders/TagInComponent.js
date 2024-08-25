@@ -148,6 +148,15 @@ export class TagInComponent{
 }
 
 export const tagMethod = {
+  /**
+    * Crée des éléments de liste basés sur les liens fournis et les insère dans un élément de liste ordonnée (ol).
+    *
+    * @param {string} direction - Détermine la direction de traitement des liens. Si "in", les liens qui ne correspondent pas à l'URL actuelle sont ajoutés. Si "out", tous les liens sont ajoutés.
+    * @param {Array} links - Un tableau d'objets représentant les liens. Chaque objet doit avoir une propriété `url`.
+    * @param {string} olIdMount - L'ID de l'élément `<ol>` où les éléments de liste seront montés.
+    * @param {string} site - Le nom ou l'identifiant du site (non utilisé dans la fonction).
+    * @param {string} url - L'URL actuelle de la page (non utilisé dans la fonction).
+  */
   liMenuCreator: (direction, links, olIdMount, site, url) =>{
     
     if (direction === "in") {
@@ -163,12 +172,28 @@ export const tagMethod = {
       })
     }
   },
+  /**
+    * Crée des éléments d'option pour un élément `<select>` et les insère dans celui-ci.
+    *
+    * @param {Array} listOptions - Un tableau d'objets représentant les options à ajouter. Chaque objet doit contenir des propriétés pour la valeur et le texte.
+    * @param {string} selectIdMount - L'ID de l'élément `<select>` où les options seront montées.
+    * @param {string} value - La propriété de l'objet `detailsOption` utilisée pour la valeur de chaque option (non utilisée directement dans cette fonction).
+    * @param {string} text - La propriété de l'objet `detailsOption` utilisée pour le texte de chaque option (non utilisée directement dans cette fonction).
+  */
   optionsSelectCreator: (listOptions, selectIdMount, value, text) => {
     listOptions.forEach(detailsOption => {
       optionForSelect(selectIdMount, detailsOption);
     })
   }
 }
+/**
+ * Crée un élément d'option pour un élément `<select>` et l'insère dans celui-ci.
+ *
+ * @param {string} selectIdMount - L'ID de l'élément `<select>` où l'option sera ajoutée.
+ * @param {Object} details - Un objet contenant les détails de l'option. Doit inclure les propriétés `value` et `text`.
+ * @param {string} details.value - La valeur de l'option à définir dans l'attribut `value`.
+ * @param {string} details.text - Le texte à afficher pour l'option.
+*/
 function optionForSelect(selectIdMount, details){
   const option = document.createElement('option'),
     mount = document.getElementById(selectIdMount),
@@ -176,6 +201,14 @@ function optionForSelect(selectIdMount, details){
     option.textContent = details.text;
     mount.appendChild(option);
 }
+/**
+ * Crée un élément de liste `<li>` avec un lien hypertexte et l'ajoute à une liste ordonnée `<ol>`.
+ *
+ * @param {string} olIdMount - L'ID de l'élément `<ol>` où l'élément de liste `<li>` sera ajouté.
+ * @param {Object} link - Un objet contenant les détails du lien. Doit inclure les propriétés `url` et `site`.
+ * @param {string} link.url - L'URL à définir dans l'attribut `href` de l'élément `<a>`.
+ * @param {string} link.site - Le texte à afficher pour le lien hypertexte.
+ */
 function linkedListIn(olIdMount, link) {
   const li = document.createElement('li'),
     olMount = document.getElementById(olIdMount);
@@ -186,6 +219,14 @@ function linkedListIn(olIdMount, link) {
     a.textContent = link.site;
   li.appendChild(a);
 }
+/**
+ * Crée un élément de liste `<li>` avec un lien hypertexte qui s'ouvre dans un nouvel onglet, puis l'ajoute à une liste ordonnée `<ol>`.
+ *
+ * @param {string} olIdMount - L'ID de l'élément `<ol>` où l'élément de liste `<li>` sera ajouté.
+ * @param {Object} link - Un objet contenant les détails du lien. Doit inclure les propriétés `url` et `site`.
+ * @param {string} link.url - L'URL à définir dans l'attribut `href` de l'élément `<a>`.
+ * @param {string} link.site - Le texte à afficher pour le lien hypertexte.
+ */
 function linkedListOut(olIdMount, link) {
   const li = document.createElement('li'),
   olMount = document.getElementById(olIdMount);
