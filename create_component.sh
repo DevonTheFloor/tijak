@@ -19,6 +19,10 @@ export default class $nom_dossier extends HTMLElement {
 	constructor () {
 		super();
 	}
+	connectedCallback(){};
+	disconnectedCallback(){};
+	adoptedCallback(){};
+	attributeChangedCallback(){};
 }
 customElements.define('$nom_fichier', $nom_dossier);
 EOL
