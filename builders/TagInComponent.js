@@ -1,8 +1,8 @@
 /**
  * Class for create tag faster
- * @param { String } tag - the tag to create
- * @param { String } idTag - Id of the tag, if null individuazlization() create a uniq one.
- * @param { String } classAtt - class of the tag
+ * @param { string } tag - the tag to create
+ * @param { string } idTag - Id of the tag, if null individuazlization() create a uniq one.
+ * @param { string } classAtt - class of the tag
  * @param { Object } mountOn - the node where the tag is mounted, generaly 'this'
  * @param { HTMLElement } getContext - the node context of the element, generaly the entire class 'this' 
  */
@@ -177,10 +177,8 @@ export const tagMethod = {
     *
     * @param {Array} listOptions - Un tableau d'objets représentant les options à ajouter. Chaque objet doit contenir des propriétés pour la valeur et le texte.
     * @param {string} selectIdMount - L'ID de l'élément `<select>` où les options seront montées.
-    * @param {string} value - La propriété de l'objet `detailsOption` utilisée pour la valeur de chaque option (non utilisée directement dans cette fonction).
-    * @param {string} text - La propriété de l'objet `detailsOption` utilisée pour le texte de chaque option (non utilisée directement dans cette fonction).
   */
-  optionsSelectCreator: (listOptions, selectIdMount, value, text) => {
+  optionsSelectCreator: (listOptions, selectIdMount) => {
     listOptions.forEach(detailsOption => {
       optionForSelect(selectIdMount, detailsOption);
     })
