@@ -1,6 +1,13 @@
 /**
  * Custom element representing an input field with label and validation schema to setting, values are: 'labelTxt','labIb(id of <label>),'inpId','type'(of input),'pattern'(regex),.
  * @extends HTMLElement
+ * @param labelTxt - text content of the label tag
+ * @param labId - id of the label tag
+ * @param inpId - Id of the input field
+ * @param type - type of input (pwd, number,etc...)
+ * @param inpPhr - text of the placeholder
+ * @param info - title of the input
+ *
  */
 export default class MyInput extends HTMLElement {
   constructor () {
