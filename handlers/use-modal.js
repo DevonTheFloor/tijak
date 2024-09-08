@@ -42,3 +42,26 @@ export function onlyOneModalOpen (modals, idParent) {
 			}
 		})
 }
+
+export function movingModal (modal) {
+	// Variables pour la fonctionnalité de déplacement
+	var isDragging = false;
+	var offsetX, offsetY;
+	// Début du déplacement
+	modal.onmousedown = (e) => {
+		isDragging = true;
+		offsetX = e.clientX - modal.offsetLeft;
+		offsetY = e.clientY - modal.offsetTop;
+	};
+	// Déplacement du modal avec une fonction fléchée
+	document.onmousemove = (e) => {
+		if (isDragging) {
+			modal.style.left = (e.clientX - offsetX) + 'px';
+			modal.style.top = (e.clientY - offsetY) + 'px';
+		}
+	};
+	// Fin du déplacement
+	document.onmouseup = ()=> {
+		isDragging = false;
+	}
+}
