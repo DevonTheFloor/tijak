@@ -151,6 +151,15 @@ export default defineConfig({
   
 })
 ```
+## Céer page et composant
+
+Le dossier tijak contient deux script bash pour créer rapidement page et commosant. Il faut ajouter deux lignes dans 'script' du pakage.json:
+```
+ "component":"./front-kaz/tijak/create_component.sh",
+    "page":"./front-kaz/tijak/create_page.sh"
+
+```
+Ils s'executent avec 'nom run component' ou 'npm run page'. La convention de nommage veut que les composants soit identifiés par deux mots (ex: level nav) et les pages doivent contenir le mot page (ex: new page'). 
    
 
 
