@@ -152,4 +152,17 @@ export default defineConfig({
 })
 ```   
 
+## Create Page and Component  
 
+The **tijak** folder contains two Bash scripts to quickly create a page and a component. You need to add the following lines to the **"scripts"** section of `package.json`:  
+
+```json
+"component": "./front-kaz/tijak/create_component.sh",
+"page": "./front-kaz/tijak/create_page.sh"
+```  
+
+They can be executed with **`npm run component`** or **`npm run page`**.  
+
+The naming convention requires:  
+- Components to have **two words** (e.g., `level nav`).  
+- Pages to include the word **"page"** (e.g., `new page`).  
